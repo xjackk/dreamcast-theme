@@ -1,8 +1,8 @@
 ;;; dreamcast-dark-theme.el --- A dark theme inspired by the Sega Dreamcast -*- lexical-binding: t; -*-
 
-;; Copyright (C) 2025
+;; Copyright (C) 2025 Jack Killilea
 
-;; Author: Your Name
+;; Author: Jack Killilea <xkillilea@gmail.com>
 ;; URL: https://github.com/xjackk/dreamcast-theme
 ;; Version: 1.0.0
 ;; Package-Requires: ((emacs "24.1"))
