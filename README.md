@@ -4,7 +4,8 @@ A pair of beautiful Emacs themes inspired by the iconic Sega Dreamcast console, 
 
 ## Screenshots
 
-(coming soon)
+[![Light Mode](light.png)]
+[![Dark Mode](dark.png)]
 
 ## Features
 
