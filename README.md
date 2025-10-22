@@ -41,7 +41,7 @@ A pair of beautiful Emacs themes inspired by the iconic Sega Dreamcast console, 
 
 1. Clone or download this repository:
    ```bash
-   git clone https://github.com/yourusername/dreamcast-theme.git
+   git clone https://github.com/xjackk/dreamcast-theme.git
    ```
 
 2. Add the theme directory to your Emacs load path and load the theme:
@@ -82,7 +82,7 @@ Or reload your config with `SPC h r r` (or `M-x doom/reload`).
 
 ```elisp
 (straight-use-package
- '(dreamcast-theme :type git :host github :repo "yourusername/dreamcast-theme"))
+ '(dreamcast-theme :type git :host github :repo "xjackk/dreamcast-theme"))
 (load-theme 'dreamcast-dark t)
 ```
 
