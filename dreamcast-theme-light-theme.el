@@ -1,54 +1,67 @@
-;;; dreamcast-dark-theme.el --- A dark theme inspired by the Sega Dreamcast -*- lexical-binding: t; -*-
+;;; dreamcast-theme-light-theme.el --- A light theme inspired by the Sega Dreamcast -*- lexical-binding: t; -*-
 
 ;; Copyright (C) 2025 Jack Killilea
 
 ;; Author: Jack Killilea <xkillilea@gmail.com>
 ;; URL: https://github.com/xjackk/dreamcast-theme
 ;; Version: 1.0.0
-;; Package-Requires: ((emacs "24.1"))
 ;; Keywords: faces, themes
+;; SPDX-License-Identifier: GPL-3.0-or-later
 
 ;; This file is NOT part of GNU Emacs.
 
+;; This program is free software: you can redistribute it and/or modify
+;; it under the terms of the GNU General Public License as published by
+;; the Free Software Foundation, either version 3 of the License, or
+;; (at your option) any later version.
+
+;; This program is distributed in the hope that it will be useful,
+;; but WITHOUT ANY WARRANTY; without even the implied warranty of
+;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+;; GNU General Public License for more details.
+
+;; You should have received a copy of the GNU General Public License
+;; along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
 ;;; Commentary:
 
-;; A dark theme inspired by the iconic Sega Dreamcast console,
+;; A light theme inspired by the iconic Sega Dreamcast console,
 ;; featuring the vibrant orange and electric blue from the Dreamcast
-;; branding, with a "glowing screen" aesthetic.
+;; branding, capturing the console's clean, white shell design.
 
 ;;; Code:
 
-(deftheme dreamcast-dark
-  "A dark theme inspired by the Sega Dreamcast.")
+(deftheme dreamcast-theme-light
+  "A light theme inspired by the Sega Dreamcast.")
 
 (let ((class '((class color) (min-colors 89)))
-      ;; Dark Mode Palette
+      ;; Light Mode Palette
       ;; Background & UI
-      (bg                "#0D1117")  ; Very dark blue-black
-      (bg-alt            "#1A2332")  ; Darker panels/modeline
-      (bg-highlight      "#2A3F54")  ; Slightly brighter blue-gray - POPS more!
-      (border            "#2D3748")  ; Borders/dividers
+      (bg                "#F8FAFB")  ; Clean white with slight blue tint
+      (bg-alt            "#E8EEF2")  ; Light gray-blue
+      (bg-highlight      "#FFE8DB")  ; Warm orange-tinted highlight - POPS more!
+      (border            "#CBD5E0")  ; Borders
 
       ;; Foreground & Text
-      (fg                "#E6EDF3")  ; Crisp white-gray
-      (fg-alt            "#9CA3AF")  ; Muted gray for secondary text
-      (comment           "#8B9FB5")  ; Lighter blue-gray
+      (fg                "#1A2332")  ; Dark blue-gray
+      (fg-alt            "#2D3748")  ; Slightly lighter for less emphasis
+      (comment           "#7590A8")  ; Lighter blue-gray - better contrast with bg-alt!
 
       ;; Syntax highlighting
-      (dreamcast-orange  "#FF6600")  ; Signature Dreamcast orange
-      (dreamcast-blue    "#00A0E9")  ; Electric blue (keywords)
-      (cyan              "#4FC3F7")  ; Lighter cyan-blue (functions)
-      (pale-blue         "#6CB6FF")  ; Medium blue (types/variables)
-      (light-orange      "#FFA726")  ; Constants
+      (dreamcast-orange  "#DD5500")  ; Slightly darker orange for contrast
+      (dreamcast-blue    "#0077CC")  ; Deeper blue (keywords), still vibrant
+      (cyan              "#0099CC")  ; Medium cyan (functions)
+      (navy-blue         "#0052CC")  ; Deep blue (types/variables) - from Jekyll theme!
+      (deep-orange       "#E65100")  ; Constants
 
       ;; Semantic colors - Dreamcast-aligned!
-      (error             "#FF6B6B")  ; Soft red, less harsh
+      (error             "#DC143C")  ; Crimson red
       (warning           "#FF8533")  ; Lighter Dreamcast orange
-      (success           "#2DD4BF")  ; Teal (blue-green) fits Dreamcast palette aesthetic
+      (success           "#2AA198")  ; Teal (blue-green) fits Dreamcast palette
       (info              "#00A0E9"))  ; Dreamcast electric blue!
 
   (custom-theme-set-faces
-   'dreamcast-dark
+   'dreamcast-theme-light
 
    ;; Base faces
    `(default ((,class (:background ,bg :foreground ,fg))))
@@ -66,12 +79,12 @@
    `(font-lock-builtin-face ((,class (:foreground ,dreamcast-blue))))
    `(font-lock-comment-face ((,class (:foreground ,comment :slant italic))))
    `(font-lock-comment-delimiter-face ((,class (:foreground ,comment))))
-   `(font-lock-constant-face ((,class (:foreground ,light-orange))))
+   `(font-lock-constant-face ((,class (:foreground ,deep-orange))))
    `(font-lock-doc-face ((,class (:foreground ,comment :slant italic))))
-   `(font-lock-function-name-face ((,class (:foreground ,light-orange :weight bold))))
+   `(font-lock-function-name-face ((,class (:foreground ,deep-orange :weight bold))))
    `(font-lock-keyword-face ((,class (:foreground ,dreamcast-blue :weight bold))))
    `(font-lock-string-face ((,class (:foreground ,dreamcast-orange))))
-   `(font-lock-type-face ((,class (:foreground ,pale-blue))))
+   `(font-lock-type-face ((,class (:foreground ,navy-blue))))
    `(font-lock-variable-name-face ((,class (:foreground ,cyan))))
    `(font-lock-warning-face ((,class (:foreground ,warning :weight bold))))
 
@@ -85,13 +98,13 @@
    `(line-number ((,class (:foreground ,comment :background ,bg))))
    `(line-number-current-line ((,class (:foreground ,dreamcast-orange :background ,bg-alt :weight bold))))
 
-   ;; Search - brighter highlights that POP
+   ;; Search - warm highlights that POP
    `(isearch ((,class (:background ,dreamcast-orange :foreground ,bg :weight bold))))
-   `(lazy-highlight ((,class (:background ,bg-highlight :foreground ,cyan :weight bold))))
+   `(lazy-highlight ((,class (:background ,bg-highlight :foreground ,navy-blue :weight bold))))
 
    ;; Links
    `(link ((,class (:foreground ,dreamcast-blue :underline t))))
-   `(link-visited ((,class (:foreground ,pale-blue :underline t))))
+   `(link-visited ((,class (:foreground ,navy-blue :underline t))))
 
    ;; Minibuffer
    `(minibuffer-prompt ((,class (:foreground ,dreamcast-blue :weight bold))))
@@ -109,7 +122,7 @@
    `(doom-modeline-bar ((,class (:background ,dreamcast-orange))))
    `(doom-modeline-buffer-file ((,class (:foreground ,fg :weight bold))))
    `(doom-modeline-buffer-modified ((,class (:foreground ,dreamcast-orange :weight bold))))
-   `(doom-modeline-buffer-path ((,class (:foreground ,pale-blue))))
+   `(doom-modeline-buffer-path ((,class (:foreground ,navy-blue))))
    `(doom-modeline-project-dir ((,class (:foreground ,dreamcast-blue :weight bold))))
 
    ;; Company (autocomplete)
@@ -131,11 +144,11 @@
    `(org-level-1 ((,class (:foreground ,dreamcast-orange :weight bold :height 1.3))))
    `(org-level-2 ((,class (:foreground ,dreamcast-blue :weight bold :height 1.2))))
    `(org-level-3 ((,class (:foreground ,cyan :weight bold :height 1.1))))
-   `(org-level-4 ((,class (:foreground ,pale-blue :weight bold))))
-   `(org-level-5 ((,class (:foreground ,light-orange :weight bold))))
+   `(org-level-4 ((,class (:foreground ,navy-blue :weight bold))))
+   `(org-level-5 ((,class (:foreground ,deep-orange :weight bold))))
    `(org-level-6 ((,class (:foreground ,dreamcast-blue))))
    `(org-level-7 ((,class (:foreground ,cyan))))
-   `(org-level-8 ((,class (:foreground ,pale-blue))))
+   `(org-level-8 ((,class (:foreground ,navy-blue))))
    `(org-link ((,class (:foreground ,dreamcast-blue :underline t))))
    `(org-code ((,class (:foreground ,dreamcast-orange))))
    `(org-verbatim ((,class (:foreground ,cyan))))
@@ -156,7 +169,7 @@
    `(markdown-header-face-1 ((,class (:foreground ,dreamcast-orange :weight bold :height 1.3))))
    `(markdown-header-face-2 ((,class (:foreground ,dreamcast-blue :weight bold :height 1.2))))
    `(markdown-header-face-3 ((,class (:foreground ,cyan :weight bold :height 1.1))))
-   `(markdown-header-face-4 ((,class (:foreground ,pale-blue :weight bold))))
+   `(markdown-header-face-4 ((,class (:foreground ,navy-blue :weight bold))))
    `(markdown-code-face ((,class (:foreground ,dreamcast-orange :background ,bg-alt))))
    `(markdown-inline-code-face ((,class (:foreground ,cyan))))
    `(markdown-link-face ((,class (:foreground ,dreamcast-blue :underline t))))
@@ -201,7 +214,7 @@
    `(trailing-whitespace ((,class (:background ,bg-alt))))
 
    ;; Dired
-   `(dired-directory ((,class (:foreground ,dreamcast-blue :weight bold :background unspecified :box nil))))  ; NO BOXES
+   `(dired-directory ((,class (:foreground ,deep-orange :weight bold :background unspecified :box nil))))  ; Darker dreamcast orange for folders, NO BOXES
    `(dired-symlink ((,class (:foreground ,cyan :background unspecified))))
    `(dired-flagged ((,class (:foreground ,error :weight bold :background unspecified))))
    `(dired-marked ((,class (:foreground ,dreamcast-orange :weight bold :background unspecified))))
@@ -209,19 +222,19 @@
    `(dired-ignored ((,class (:foreground ,comment))))
    `(dired-warning ((,class (:foreground ,warning))))
    `(dired-perm-write ((,class (:foreground ,success))))
-   ;; Plain permissions - no highlighting or boxes
+   ;; Plain permissions
    `(dired-special ((,class (:foreground ,dreamcast-blue))))
-   `(dired-set-id ((,class (:foreground ,light-orange))))
+   `(dired-set-id ((,class (:foreground ,dreamcast-orange))))
    `(dired-broken-symlink ((,class (:foreground ,error))))
 
    ;; All-the-icons dired (removes icon backgrounds if installed)
-   `(all-the-icons-dired-dir-face ((,class (:foreground ,dreamcast-blue :background unspecified))))
+   `(all-the-icons-dired-dir-face ((,class (:foreground ,deep-orange :background unspecified))))
 
-   ;; Dired+ (if installed) - lighter orange for filenames
+   ;; Dired+ (if installed) - filenames and extensions same color
    `(diredp-dir-heading ((,class (:foreground ,dreamcast-orange :weight bold :background unspecified))))
-   `(diredp-dir-name ((,class (:foreground ,dreamcast-blue :weight bold :background unspecified :box nil :underline nil))))  ; Explicitly no box/bg
-   `(diredp-file-name ((,class (:foreground ,light-orange :inherit nil))))  ; Lighter dreamcast orange, no inheritance
-   `(diredp-file-suffix ((,class (:foreground ,light-orange :inherit nil))))  ; Same color as filename, no inheritance
+   `(diredp-dir-name ((,class (:foreground ,deep-orange :weight bold :background unspecified :box nil :underline nil))))  ; Darker orange for folders, explicitly no box/bg
+   `(diredp-file-name ((,class (:foreground ,fg :inherit nil))))  ; Same as file suffix, no inheritance
+   `(diredp-file-suffix ((,class (:foreground ,fg :inherit nil))))  ; Same color as filename, no inheritance
    `(diredp-symlink ((,class (:foreground ,cyan))))
    `(diredp-date-time ((,class (:foreground ,fg-alt))))
    `(diredp-number ((,class (:foreground ,fg-alt))))
@@ -234,22 +247,22 @@
    `(diredp-link-priv ((,class (:foreground ,fg))))
    `(diredp-rare-priv ((,class (:foreground ,fg))))
    `(diredp-other-priv ((,class (:foreground ,fg))))
-   `(diredp-autofile-name ((,class (:foreground ,light-orange))))
-   `(diredp-compressed-file-suffix ((,class (:foreground ,pale-blue))))
+   `(diredp-autofile-name ((,class (:foreground ,fg))))
+   `(diredp-compressed-file-suffix ((,class (:foreground ,navy-blue))))
    `(diredp-ignored-file-name ((,class (:foreground ,comment))))
 
-   ;; Enhanced Magit faces for better readability
+   ;; Enhanced Magit faces
    `(magit-section-highlight ((,class (:background ,bg-alt))))
-   `(magit-diff-hunk-heading ((,class (:background ,bg-alt :foreground ,fg))))
+   `(magit-diff-hunk-heading ((,class (:background ,bg-alt :foreground ,fg :weight bold))))
    `(magit-diff-hunk-heading-highlight ((,class (:background ,bg-highlight :foreground ,dreamcast-orange :weight bold))))
    `(magit-diff-context-highlight ((,class (:background ,bg-alt :foreground ,fg))))
-   `(magit-diff-added-highlight ((,class (:background ,bg-alt :foreground ,success))))
-   `(magit-diff-removed-highlight ((,class (:background ,bg-alt :foreground ,error))))
-   `(magit-diffstat-added ((,class (:foreground ,success))))
-   `(magit-diffstat-removed ((,class (:foreground ,error))))
+   `(magit-diff-added-highlight ((,class (:background "#E8F5E9" :foreground ,success :weight bold))))
+   `(magit-diff-removed-highlight ((,class (:background "#FFEBEE" :foreground ,error :weight bold))))
+   `(magit-diffstat-added ((,class (:foreground ,success :weight bold))))
+   `(magit-diffstat-removed ((,class (:foreground ,error :weight bold))))
    `(magit-section-heading-selection ((,class (:foreground ,dreamcast-orange :weight bold))))
-   `(magit-tag ((,class (:foreground ,light-orange :weight bold))))
-   `(magit-filename ((,class (:foreground ,fg))))
+   `(magit-tag ((,class (:foreground ,deep-orange :weight bold))))
+   `(magit-filename ((,class (:foreground ,fg :weight bold))))
    `(magit-dimmed ((,class (:foreground ,fg-alt))))
    `(magit-signature-good ((,class (:foreground ,success))))
    `(magit-signature-bad ((,class (:foreground ,error))))
@@ -281,40 +294,40 @@
    `(rainbow-delimiters-depth-1-face ((,class (:foreground ,dreamcast-blue))))
    `(rainbow-delimiters-depth-2-face ((,class (:foreground ,dreamcast-orange))))
    `(rainbow-delimiters-depth-3-face ((,class (:foreground ,cyan))))
-   `(rainbow-delimiters-depth-4-face ((,class (:foreground ,pale-blue))))
-   `(rainbow-delimiters-depth-5-face ((,class (:foreground ,light-orange))))
+   `(rainbow-delimiters-depth-4-face ((,class (:foreground ,navy-blue))))
+   `(rainbow-delimiters-depth-5-face ((,class (:foreground ,deep-orange))))
    `(rainbow-delimiters-depth-6-face ((,class (:foreground ,dreamcast-blue))))
    `(rainbow-delimiters-depth-7-face ((,class (:foreground ,cyan))))
    `(rainbow-delimiters-depth-8-face ((,class (:foreground ,dreamcast-orange))))
-   `(rainbow-delimiters-depth-9-face ((,class (:foreground ,pale-blue))))
+   `(rainbow-delimiters-depth-9-face ((,class (:foreground ,navy-blue))))
    `(rainbow-delimiters-mismatched-face ((,class (:foreground ,error :weight bold))))
    `(rainbow-delimiters-unmatched-face ((,class (:foreground ,error :weight bold))))
 
    ;; Language-specific faces
 
    ;; Ruby - Instance variables, symbols, etc.
-   `(ruby-constant-face ((,class (:foreground ,light-orange :weight bold))))
+   `(ruby-constant-face ((,class (:foreground ,deep-orange :weight bold))))
    `(enh-ruby-op-face ((,class (:foreground ,fg))))
    `(enh-ruby-string-delimiter-face ((,class (:foreground ,dreamcast-orange))))
    `(enh-ruby-regexp-delimiter-face ((,class (:foreground ,cyan))))
 
    ;; Python
    `(python-builtins-face ((,class (:foreground ,dreamcast-blue))))
-   `(python-decorators-face ((,class (:foreground ,light-orange :slant italic))))
+   `(python-decorators-face ((,class (:foreground ,deep-orange :slant italic))))
 
    ;; Go
    `(go-function-call-face ((,class (:foreground ,cyan))))
-   `(go-package-name-face ((,class (:foreground ,pale-blue))))
+   `(go-package-name-face ((,class (:foreground ,navy-blue))))
 
    ;; TypeScript/JavaScript
    `(typescript-jsdoc-tag ((,class (:foreground ,comment :slant italic))))
-   `(typescript-jsdoc-type ((,class (:foreground ,pale-blue :slant italic))))
+   `(typescript-jsdoc-type ((,class (:foreground ,navy-blue :slant italic))))
    `(typescript-jsdoc-value ((,class (:foreground ,comment :slant italic))))
    `(js2-function-call ((,class (:foreground ,cyan))))
-   `(js2-object-property ((,class (:foreground ,pale-blue))))
-   `(js2-external-variable ((,class (:foreground ,light-orange))))
+   `(js2-object-property ((,class (:foreground ,navy-blue))))
+   `(js2-external-variable ((,class (:foreground ,deep-orange))))
    `(js2-jsdoc-tag ((,class (:foreground ,comment :slant italic))))
-   `(js2-jsdoc-type ((,class (:foreground ,pale-blue :slant italic))))
+   `(js2-jsdoc-type ((,class (:foreground ,navy-blue :slant italic))))
    `(js2-jsdoc-value ((,class (:foreground ,comment :slant italic))))
 
    ;; Flycheck/Flymake (error checking)
@@ -329,7 +342,7 @@
    `(helm-selection ((,class (:background ,bg-highlight :foreground ,dreamcast-orange :weight bold))))
    `(helm-match ((,class (:foreground ,dreamcast-blue :weight bold))))
    `(helm-source-header ((,class (:foreground ,dreamcast-orange :weight bold :height 1.1))))
-   `(helm-candidate-number ((,class (:foreground ,light-orange))))
+   `(helm-candidate-number ((,class (:foreground ,deep-orange))))
    `(helm-buffer-directory ((,class (:foreground ,dreamcast-blue :weight bold))))
    `(helm-buffer-file ((,class (:foreground ,fg))))
    `(helm-ff-directory ((,class (:foreground ,dreamcast-blue :weight bold))))
@@ -337,7 +350,7 @@
    `(helm-ff-executable ((,class (:foreground ,success))))
    `(helm-ff-symlink ((,class (:foreground ,cyan :slant italic))))
 
-   ;; Selectrum (another completion framework)
+   ;; Selectrum
    `(selectrum-current-candidate ((,class (:background ,bg-highlight :foreground ,dreamcast-orange :weight bold))))
    `(selectrum-primary-highlight ((,class (:foreground ,dreamcast-blue :weight bold))))
    `(selectrum-secondary-highlight ((,class (:foreground ,cyan))))
@@ -347,19 +360,20 @@
    `(compilation-warning ((,class (:foreground ,warning :weight bold))))
    `(compilation-error ((,class (:foreground ,error :weight bold))))
    `(compilation-line-number ((,class (:foreground ,dreamcast-blue))))
-   `(compilation-column-number ((,class (:foreground ,pale-blue))))
+   `(compilation-column-number ((,class (:foreground ,navy-blue))))
    `(compilation-mode-line-exit ((,class (:foreground ,success :weight bold))))
    `(compilation-mode-line-fail ((,class (:foreground ,error :weight bold)))))
 
   (custom-theme-set-variables
-   'dreamcast-dark
-   '(frame-background-mode 'dark)))
+   'dreamcast-theme-light
+   '(frame-background-mode 'light)))
 
 ;;;###autoload
 (when load-file-name
   (add-to-list 'custom-theme-load-path
                (file-name-as-directory (file-name-directory load-file-name))))
 
-(provide-theme 'dreamcast-dark)
+(provide 'dreamcast-theme-light-theme)
+(provide-theme 'dreamcast-theme-light)
 
-;;; dreamcast-dark-theme.el ends here
+;;; dreamcast-theme-light-theme.el ends here
